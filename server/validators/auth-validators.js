@@ -1,6 +1,4 @@
-const {
-    z
-} = require('zod')
+const { z } = require('zod');
 
 const signedUpSchema = z.object({
     email: z.string({
@@ -21,8 +19,8 @@ const signedUpSchema = z.object({
     password: z.string({
         required_error: "Password is required"
     }).trim().min(7, {
-        message: "Password must be at least 11 characters long"
+        message: "Password must be at least 7 characters long"
     }),
-})
+});
 
-module.exports = signedUpSchema
+module.exports = signedUpSchema;
