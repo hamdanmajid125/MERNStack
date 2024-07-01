@@ -10,7 +10,13 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "@quranjs/api": "^1.7.1",
+    "bcryptjs": "^2.4.3",
+    "dotenv": "^16.4.5",
     "express": "^4.19.2",
-    "nodemon": "^3.1.4"
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.4.4",
+    "nodemon": "^3.1.4",
+    "zod": "^3.23.8"
   }
 }
