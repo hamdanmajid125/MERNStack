@@ -33,37 +33,32 @@ userSchema.pre('save', function () {
     }
 
     try {
-
-       
         var salt = bcrypt.genSaltSync(10);
         var hash = bcrypt.hashSync(user.password, salt);
         user.password = hash
 
     } catch (error) {
-
         next(error)
-        
+
     }
 })
 userSchema.methods.comparePassword = async function (password) {
     return await bcrypt.compare(password, this.password)
 }
 userSchema.methods.generateToken = async function () {
-    try{
-        const token = jwt.sign(
-            {
+    try {
+        const token = jwt.sign({
                 userId: this._id.toString(),
                 email: this.email,
                 isAdmin: this.isAdmin
             },
-            process.env.JWT_SECRET_KEY,
-            {
-                expiresIn:"30d"
+            process.env.JWT_SECRET_KEY, {
+                expiresIn: "30d"
             }
 
         )
         return token
-    }catch(error){
+    } catch (error) {
         console.error(error);
     }
 }

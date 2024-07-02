@@ -39,7 +39,8 @@ const login = async (req, res) => {
 
     } catch (error) {
         console.log(error);
-        return res.status(500).send("Internal Server Error")
+        // return res.status(500).send("Internal Server Error")
+        next(error)
 
     }
 }
@@ -74,9 +75,7 @@ const register = async (req, res) => {
             userId: data._id.toString()
         })
     } catch (error) {
-        console.log(error);
-        return res.status(500).send("Internal Server Error")
-
+        next(error)
     }
 }
 module.exports = {

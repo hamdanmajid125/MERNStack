@@ -4,9 +4,12 @@ const validate = (schema) => async (req, res, next) => {
         req.body = parsedBody;
         next();
     } catch (error) {
-        res.status(400).json({
-            errors: error.errors
+        const errors = error.errors
+        let errorString = ""
+        errors.forEach(validateError => {
+            errorString += validateError.message+'\n'
         });
+        next({type:'validation_error', status : 422,message: errorString })
     }
 }
 
